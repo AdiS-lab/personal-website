@@ -35,12 +35,13 @@ function Home() {
 
       <div className="bio">
         <p>
-          studying EE at <a href="https://www.gatech.edu" target="_blank" rel="noopener noreferrer" className="bio-link">georgia tech</a>.
+          i'm studying EE at <a href="https://www.gatech.edu" target="_blank" rel="noopener noreferrer" className="bio-link">georgia tech</a>.
           here are some of my <Link className="bio-link" to="/books">favorite books</Link> and
           an <a href="https://frontendhanddraw.vercel.app/" target="_blank" rel="noopener noreferrer" className="bio-link">app i built</a>.
         </p>
         <p>
-          i believe software should be a magical experience.
+          i believe interacting with software should be a magical experience. 
+          find me on <a href="https://www.linkedin.com/in/adi-shankar-7268b7311/" target="_blank" rel="noopener noreferrer" className="bio-link">linkedin</a> and <a href="https://github.com/AdiS-lab" target="_blank" rel="noopener noreferrer" className="bio-link">github</a>.
         </p>
       </div>
     </>
