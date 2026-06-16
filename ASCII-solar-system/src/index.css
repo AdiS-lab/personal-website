@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ── Left sidebar ── */
+.sidebar {
+  width: 32%;
+  min-width: 320px;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 40px;
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid #1a1a1a;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: #999;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.sidebar-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #444;
+  letter-spacing: 1px;
+}
+
+.sidebar-bio {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #555;
+  max-width: 340px;
+}
+
+.sidebar-bio span {
+  color: #777;
+}
+
+.sidebar-files {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-file {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #444;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.sidebar-file:hover {
+  color: #aaa;
+}
+
+.sidebar-file::before {
+  content: '> ';
+  color: #333;
+}
+
+/* ── Right canvas ── */
+.canvas-container {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+  background: #111111;
+}
