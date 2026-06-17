@@ -154,6 +154,26 @@ const PARTICLE_FS = /* glsl */ `
 `
 
 // ============================================================
+//  Sun glow fragment shader (warm vintage tint)
+// ============================================================
+
+const SUN_FS = /* glsl */ `
+  uniform sampler2D atlas;
+  varying vec2 vUv;
+  varying float vCharIndex;
+
+  void main() {
+    float idx = floor(clamp(vCharIndex, 0.0, 7.0));
+    vec2 atlasUv = vec2((vUv.x + idx) / 8.0, vUv.y);
+    vec4 texel = texture2D(atlas, atlasUv);
+    float alpha = texel.r;
+    if (alpha < 0.1) discard;
+    vec3 warmGlow = vec3(1.0, 0.95, 0.85) * 1.6;
+    gl_FragColor = vec4(warmGlow, alpha);
+  }
+`
+
+// ============================================================
 //  Shared material factory
 // ============================================================
 
@@ -162,6 +182,17 @@ function createParticleMaterial(atlas: THREE.Texture): THREE.ShaderMaterial {
     uniforms: { atlas: { value: atlas } },
     vertexShader: PARTICLE_VS,
     fragmentShader: PARTICLE_FS,
+    transparent: true,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+  })
+}
+
+function createSunMaterial(atlas: THREE.Texture): THREE.ShaderMaterial {
+  return new THREE.ShaderMaterial({
+    uniforms: { atlas: { value: atlas } },
+    vertexShader: PARTICLE_VS,
+    fragmentShader: SUN_FS,
     transparent: true,
     depthWrite: false,
     side: THREE.DoubleSide,
@@ -185,7 +216,7 @@ function createLabelTexture(name: string): THREE.CanvasTexture {
   canvas.height = height
   ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
   ctx.clearRect(0, 0, width, height)
-  ctx.fillStyle = '#aaaaaa'
+  ctx.fillStyle = name === 'Sun' ? '#ffffff' : '#aaaaaa'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   ctx.fillText(name, width / 2, height / 2)
@@ -229,8 +260,8 @@ function AsciiSun({ atlas }: { atlas: THREE.Texture }) {
   const surfaceMeshRef = useRef<THREE.InstancedMesh>(null)
   const flareMeshRef = useRef<THREE.InstancedMesh>(null)
 
-  const surfaceMaterial = useMemo(() => createParticleMaterial(atlas), [atlas])
-  const flareMaterial = useMemo(() => createParticleMaterial(atlas), [atlas])
+  const surfaceMaterial = useMemo(() => createSunMaterial(atlas), [atlas])
+  const flareMaterial = useMemo(() => createSunMaterial(atlas), [atlas])
 
   const surfacePositions = useMemo(() => fibonacciSphere(SUN_SURFACE_COUNT, SUN_R), [])
 
@@ -760,7 +791,7 @@ function Scene() {
 export default function SolarSystem() {
   return (
     <Canvas
-      camera={{ position: [0, 12 * SCALE, 18 * SCALE], fov: 45, near: 0.1, far: 1000 }}
+      camera={{ position: [0, 16 * SCALE, 0.5 * SCALE], fov: 45, near: 0.1, far: 1000 }}
       style={{ width: '100%', height: '100%' }}
     >
       <color attach="background" args={['#0d0d0d']} />
