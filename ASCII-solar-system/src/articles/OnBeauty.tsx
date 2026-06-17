@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
 
 const roseBreatheKeyframes = `
 @keyframes roseBreathe {
@@ -8,8 +8,6 @@ const roseBreatheKeyframes = `
 
 function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
-
   useEffect(() => {
     fetch(src)
       .then((r) => r.text())
@@ -49,12 +47,9 @@ function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }
     <>
       <style>{roseBreatheKeyframes}</style>
       <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         style={{
           transformOrigin: 'center',
-          transition: 'transform 0.4s ease-out, filter 0.4s ease-out',
-          animation: isHovered ? 'roseBreathe 2s ease-in-out infinite' : 'none',
+          animation: 'roseBreathe 2s ease-in-out infinite',
         }}
       >
         <canvas ref={canvasRef} style={{ display: 'block', margin: '0 auto' }} />
