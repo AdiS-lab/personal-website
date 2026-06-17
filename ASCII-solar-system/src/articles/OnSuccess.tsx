@@ -1,18 +1,75 @@
+import { useRef, useEffect, useState } from 'react'
+
+const crownBreatheKeyframes = `
+@keyframes crownBreathe {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.03); filter: brightness(1.3); }
+}`
+
+function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+
+  useEffect(() => {
+    fetch(src)
+      .then((r) => r.text())
+      .then((text) => {
+        const canvas = canvasRef.current
+        if (!canvas) return
+
+        const lines = text.split('\n')
+        const fontSize = 10
+        const lineHeight = fontSize * 1.15
+        const charWidth = fontSize * 0.6
+
+        const maxCols = Math.max(...lines.map((l) => l.length))
+        const w = Math.ceil(maxCols * charWidth)
+        const h = Math.ceil(lines.length * lineHeight)
+
+        canvas.width = w
+        canvas.height = h
+        canvas.style.width = '100%'
+        canvas.style.maxWidth = `${maxWidth}px`
+        canvas.style.height = 'auto'
+        canvas.style.aspectRatio = `${w} / ${h}`
+
+        const ctx = canvas.getContext('2d')!
+        ctx.clearRect(0, 0, w, h)
+        ctx.fillStyle = '#ffffff'
+        ctx.font = `${fontSize}px monospace`
+        ctx.textBaseline = 'top'
+
+        for (let i = 0; i < lines.length; i++) {
+          ctx.fillText(lines[i], 0, i * lineHeight)
+        }
+      })
+  }, [src, maxWidth])
+
+  return (
+    <>
+      <style>{crownBreatheKeyframes}</style>
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          transformOrigin: 'center',
+          transition: 'transform 0.4s ease-out, filter 0.4s ease-out',
+          animation: isHovered ? 'crownBreathe 2s ease-in-out infinite' : 'none',
+        }}
+      >
+        <canvas ref={canvasRef} style={{ display: 'block', margin: '0 auto' }} />
+      </div>
+    </>
+  )
+}
+
 export default function OnSuccess() {
   return (
     <>
       <h1 className="article-title">on success</h1>
       <div className="article-meta">march 2026</div>
       <div className="article-image">
-        <pre>{`        .    *    .    *    .
-       /\\        /\\        /\\
-      /  \\  /\\  /  \\  /\\  /  \\
-     /    \\/  \\/    \\/  \\/    \\
-    /                          \\
-   |  *    *    *    *    *    |
-   |    o    o    o    o    o  |
-   |                          |
-    \\________________________/`}</pre>
+        <AsciiCanvas src="/crown.txt" maxWidth={350} />
       </div>
       <div className="article-body">
         <p>
