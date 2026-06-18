@@ -149,7 +149,7 @@ const PARTICLE_FS = /* glsl */ `
     vec4 texel = texture2D(atlas, atlasUv);
     float alpha = texel.r;
     if (alpha < 0.1) discard;
-    gl_FragColor = vec4(vec3(1.0), alpha);
+    gl_FragColor = vec4(vec3(1.8), alpha);
   }
 `
 
@@ -373,7 +373,6 @@ function AsciiSun({ atlas }: { atlas: THREE.Texture }) {
 
   return (
     <>
-      <PlanetLabel name="Sun" offset={SUN_R + PARTICLE_SIZE * 6} />
       <instancedMesh
         ref={surfaceMeshRef}
         args={[surfaceGeo, surfaceMaterial, SUN_SURFACE_COUNT]}
@@ -674,8 +673,8 @@ function AsciiPlanet({ config, atlas }: { config: PlanetConfig; atlas: THREE.Tex
           const len = Math.sqrt(px * px + py * py + pz * pz)
           const nx = px / len, ny = py / len, nz = pz / len
           const dot = nx * _lightDir.x + ny * _lightDir.y + nz * _lightDir.z
-          const brightness = Math.max(0, dot * 0.85 + 0.15 * Math.max(0, dot * 0.5 + 0.5))
-          charIndices[i] = Math.max(1, Math.floor(brightness * (CHAR_COUNT - 1) + 0.5))
+          const brightness = Math.max(0.15, dot * 0.7 + 0.3 * Math.max(0, dot * 0.5 + 0.5))
+          charIndices[i] = Math.max(2, Math.floor(brightness * (CHAR_COUNT - 1) + 0.5))
         }
         const attr = mesh.geometry.getAttribute('aCharIndex') as THREE.InstancedBufferAttribute
         attr.needsUpdate = true
@@ -705,8 +704,8 @@ function AsciiPlanet({ config, atlas }: { config: PlanetConfig; atlas: THREE.Tex
           const len = Math.sqrt(px * px + py * py + pz * pz)
           const nx = px / len, ny = py / len, nz = pz / len
           const dot = nx * moonLightDir.x + ny * moonLightDir.y + nz * moonLightDir.z
-          const brightness = Math.max(0, dot * 0.85 + 0.15 * Math.max(0, dot * 0.5 + 0.5))
-          moonCharIndices[i] = Math.max(1, Math.floor(brightness * (CHAR_COUNT - 1) + 0.5))
+          const brightness = Math.max(0.15, dot * 0.7 + 0.3 * Math.max(0, dot * 0.5 + 0.5))
+          moonCharIndices[i] = Math.max(2, Math.floor(brightness * (CHAR_COUNT - 1) + 0.5))
         }
         const attr = moonMeshRef.current.geometry.getAttribute('aCharIndex') as THREE.InstancedBufferAttribute
         attr.needsUpdate = true
@@ -716,7 +715,6 @@ function AsciiPlanet({ config, atlas }: { config: PlanetConfig; atlas: THREE.Tex
 
   return (
     <group ref={groupRef}>
-      <PlanetLabel name={config.name} offset={r + particleSize * 4} />
       <instancedMesh
         ref={meshRef}
         args={[surfaceGeo, material, particleCount]}
@@ -774,7 +772,7 @@ function Scene() {
   })
 
   return (
-    <group ref={ref}>
+    <group ref={ref} position={[0, 6, 0]}>
       <AsciiSun atlas={atlas} />
       <OrbitalWaveField atlas={atlas} mouseWorld={mouseWorld} />
       {PLANETS.map((config) => (
@@ -791,7 +789,7 @@ function Scene() {
 export default function SolarSystem() {
   return (
     <Canvas
-      camera={{ position: [0, 16 * SCALE, 0.5 * SCALE], fov: 45, near: 0.1, far: 1000 }}
+      camera={{ position: [0, 12 * SCALE, 22 * SCALE], fov: 45, near: 0.1, far: 1000 }}
       style={{ width: '100%', height: '100%' }}
     >
       <color attach="background" args={['#0d0d0d']} />
