@@ -1,6 +1,6 @@
 import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Billboard } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 
 // ============================================================
@@ -204,49 +204,49 @@ function createSunMaterial(atlas: THREE.Texture): THREE.ShaderMaterial {
 //  Planet name label
 // ============================================================
 
-function createLabelTexture(name: string): THREE.CanvasTexture {
-  const canvas = document.createElement('canvas')
-  const fontSize = 64
-  const ctx = canvas.getContext('2d')!
-  ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
-  const metrics = ctx.measureText(name)
-  const width = Math.ceil(metrics.width) + 20
-  const height = fontSize + 20
-  canvas.width = width
-  canvas.height = height
-  ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
-  ctx.clearRect(0, 0, width, height)
-  ctx.fillStyle = name === 'Sun' ? '#ffffff' : '#aaaaaa'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-  ctx.fillText(name, width / 2, height / 2)
-  const tex = new THREE.CanvasTexture(canvas)
-  tex.minFilter = THREE.LinearFilter
-  tex.magFilter = THREE.LinearFilter
-  tex.needsUpdate = true
-  return tex
-}
+// function createLabelTexture(name: string): THREE.CanvasTexture {
+//   const canvas = document.createElement('canvas')
+//   const fontSize = 64
+//   const ctx = canvas.getContext('2d')!
+//   ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
+//   const metrics = ctx.measureText(name)
+//   const width = Math.ceil(metrics.width) + 20
+//   const height = fontSize + 20
+//   canvas.width = width
+//   canvas.height = height
+//   ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
+//   ctx.clearRect(0, 0, width, height)
+//   ctx.fillStyle = name === 'Sun' ? '#ffffff' : '#aaaaaa'
+//   ctx.textAlign = 'center'
+//   ctx.textBaseline = 'middle'
+//   ctx.fillText(name, width / 2, height / 2)
+//   const tex = new THREE.CanvasTexture(canvas)
+//   tex.minFilter = THREE.LinearFilter
+//   tex.magFilter = THREE.LinearFilter
+//   tex.needsUpdate = true
+//   return tex
+// }
 
-function PlanetLabel({ name, offset }: { name: string; offset: number }) {
-  const tex = useMemo(() => createLabelTexture(name), [name])
-  const aspect = tex.image.width / tex.image.height
-  const labelHeight = offset * 0.6
-  const labelWidth = labelHeight * aspect
-
-  return (
-    <Billboard position={[0, offset, 0]}>
-      <mesh>
-        <planeGeometry args={[labelWidth, labelHeight]} />
-        <meshBasicMaterial
-          map={tex}
-          transparent
-          depthWrite={false}
-          depthTest={false}
-        />
-      </mesh>
-    </Billboard>
-  )
-}
+// function PlanetLabel({ name, offset }: { name: string; offset: number }) {
+//   const tex = useMemo(() => createLabelTexture(name), [name])
+//   const aspect = tex.image.width / tex.image.height
+//   const labelHeight = offset * 0.6
+//   const labelWidth = labelHeight * aspect
+//
+//   return (
+//     <Billboard position={[0, offset, 0]}>
+//       <mesh>
+//         <planeGeometry args={[labelWidth, labelHeight]} />
+//         <meshBasicMaterial
+//           map={tex}
+//           transparent
+//           depthWrite={false}
+//           depthTest={false}
+//         />
+//       </mesh>
+//     </Billboard>
+//   )
+// }
 
 // ============================================================
 //  AsciiSun
