@@ -47,6 +47,16 @@ export default function OnBeauty() {
     <>
       <h1 className="article-title">on beauty</h1>
       <div className="article-meta">june 2026</div>
+      <div className="article-body">
+        <h2>reflection tldr</h2>
+        <p>
+          as you can tell, i find a lot of beauty in existential moments. i love being reminded
+          of the wonder surrounding our existence. to me, surrendering can apply to thoughts,
+          expectations, and preconceptions. when we break out of a phase of tunnel vision or
+          neurotic cycles, unboundedness becomes apparent, catharsis floods our bodies, and
+          this is exactly when beauty appears for me.
+        </p>
+      </div>
       <div className="article-image">
         <AsciiCanvas src="/rose.txt" maxWidth={350} />
       </div>
@@ -120,14 +130,6 @@ export default function OnBeauty() {
           reflection was encouraged, but thought about reflection was immediately washed away
         </p>
 
-        <h2>reflection</h2>
-        <p>
-          as you can tell, i find a lot of beauty in existential moments. i love being reminded
-          of the wonder surrounding our existence. to me, surrendering can apply to thoughts,
-          expectations, and preconceptions. when we break out of a phase of tunnel vision or
-          neurotic cycles, unboundedness becomes apparent, catharsis floods our bodies, and
-          this is exactly when beauty appears for me.
-        </p>
         <img
           src="/PuertoVallarta.jpg"
           alt="Puerto Vallarta"

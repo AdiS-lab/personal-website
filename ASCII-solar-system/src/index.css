@@ -23,8 +23,7 @@ body {
 }
 
 .page:has(.solar-frame) {
-  height: 100vh;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ── Header ── */
@@ -82,6 +81,7 @@ body {
   color: #888;
   line-height: 1.8;
   max-width: 520px;
+  padding-bottom: 8px;
 }
 
 .bio-link {
@@ -96,11 +96,27 @@ body {
   color: #e0e0e0;
 }
 
+/* ── Fade-up animation ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+
 /* ── ASCII frame for solar system ── */
 .solar-frame {
   width: 100%;
-  flex: 1;
-  min-height: 0;
+  height: 70vh;
+  flex: none;
   display: flex;
   flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
@@ -158,7 +174,7 @@ body {
   height: 100% !important;
 }
 
-/* ── Sub pages (videos, writings) ── */
+/* ── Sub pages (videos, thoughts) ── */
 .sub-page {
   display: flex;
   flex-direction: column;
@@ -230,6 +246,36 @@ body {
   background: #111;
 }
 
+/* ── Thoughts layout (side-by-side) ── */
+.thoughts-layout {
+  display: flex;
+  gap: 48px;
+}
+
+.thoughts-list {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thoughts-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .thoughts-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
 /* ── Article ── */
 .article-page {
   max-width: 600px;
@@ -274,7 +320,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: 14px;
+  font-size: 15px;
   color: #999;
   line-height: 1.8;
 }

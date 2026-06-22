@@ -10,7 +10,7 @@ export default function Article() {
     return (
       <div className="sub-page article-page">
         <p>not found.</p>
-        <Link to="/writings" className="back-link">writings</Link>
+        <Link to="/thoughts" className="back-link">thoughts</Link>
       </div>
     )
   }
@@ -19,7 +19,7 @@ export default function Article() {
 
   return (
     <div className="sub-page article-page">
-      <Link to="/writings" className="back-link">writings</Link>
+      <Link to="/thoughts" className="back-link">thoughts</Link>
       <Suspense fallback={<div className="article-loading">...</div>}>
         <Component />
       </Suspense>

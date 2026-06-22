@@ -1,8 +1,6 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import SolarSystem from './SolarSystem'
-import { FolderList, VideoFolder, VideoPlayer } from './Gallery'
 import Writings from './Writings'
-import Article from './Article'
 
 function AsciiFrame({ children }: { children: React.ReactNode }) {
   return (
@@ -29,11 +27,13 @@ function AsciiFrame({ children }: { children: React.ReactNode }) {
 function Home() {
   return (
     <>
-      <AsciiFrame>
-        <SolarSystem />
-      </AsciiFrame>
+      <div className="fade-up">
+        <AsciiFrame>
+          <SolarSystem />
+        </AsciiFrame>
+      </div>
 
-      <div className="bio">
+      <div className="bio fade-up" style={{ animationDelay: '0.15s' }}>
         <p>
           i'm studying Electrical Engineering at georgia tech.
           here are some of my <Link className="bio-link" to="/books">favorite books</Link> and
@@ -73,7 +73,7 @@ function VideosPage() {
   return (
     <div className="sub-page">
       <div className="sub-page-title">videos</div>
-      <FolderList />
+      <p style={{ fontSize: '13px', color: '#555' }}>coming soon</p>
     </div>
   )
 }
@@ -81,7 +81,7 @@ function VideosPage() {
 function WritingsPage() {
   return (
     <div className="sub-page">
-      <div className="sub-page-title">writings</div>
+      <div className="sub-page-title">thoughts</div>
       <Writings />
     </div>
   )
@@ -93,13 +93,9 @@ export default function App() {
   console.log(pathParts)
   console.log(location.pathname)
 
-  const isDetail =
-    (pathParts[0] === 'writings' && pathParts.length >= 2) ||
-    (pathParts[0] === 'videos' && pathParts.length >= 3)
-
   return (
     <div className="page">
-      {!isDetail && (
+      {(
         <header className="header">
           <div className="header-left">
             <Link className="header-name" to="/">
@@ -114,10 +110,10 @@ export default function App() {
               videos
             </Link>
             <Link
-              className={`nav-link${location.pathname.startsWith('/writings') ? ' active' : ''}`}
-              to="/writings"
+              className={`nav-link${location.pathname.startsWith('/thoughts') ? ' active' : ''}`}
+              to="/thoughts"
             >
-              writings
+              thoughts
             </Link>
           </nav>
         </header>
@@ -126,11 +122,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/videos" element={<VideosPage />} />
-        <Route path="/videos/:folderId" element={<VideoFolder />} />
-        <Route path="/videos/:folderId/:videoId" element={<VideoPlayer />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/writings" element={<WritingsPage />} />
-        <Route path="/writings/:id" element={<Article />} />
+        <Route path="/thoughts" element={<WritingsPage />} />
       </Routes>
     </div>
   )
