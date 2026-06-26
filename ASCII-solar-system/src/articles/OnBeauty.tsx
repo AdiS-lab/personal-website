@@ -23,7 +23,7 @@ function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }
         const finalLines = croppedLines.map((l) => l.slice(minIndent))
         const maxCols = Math.max(...finalLines.map((l) => l.length))
         const w = Math.ceil(maxCols * charWidth)
-        const h = Math.ceil(lines.length * lineHeight)
+        // const h = Math.ceil(lines.length * lineHeight)
 
         const finalH = Math.ceil(finalLines.length * lineHeight)
         canvas.width = w
