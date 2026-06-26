@@ -27,13 +27,13 @@ function AsciiFrame({ children }: { children: React.ReactNode }) {
 function Home() {
   return (
     <>
-      <div className="fade-up">
+      <div>
         <AsciiFrame>
           <SolarSystem />
         </AsciiFrame>
       </div>
 
-      <div className="bio fade-up" style={{ animationDelay: '0.15s' }}>
+      <div className="bio">
         <p>
           i'm studying Electrical Engineering at georgia tech.
           here are some of my <Link className="bio-link" to="/books">favorite books</Link> and

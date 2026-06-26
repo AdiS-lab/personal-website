@@ -14,25 +14,33 @@ function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }
         const lineHeight = fontSize * 1.15
         const charWidth = fontSize * 0.6
 
-        const maxCols = Math.max(...lines.map((l) => l.length))
+        const trimmedLines = lines.map((l) => l.trimEnd())
+        const nonEmptyLines = trimmedLines.filter((l) => l.length > 0)
+        const firstNonEmpty = trimmedLines.findIndex((l) => l.length > 0)
+        const lastNonEmpty = trimmedLines.length - 1 - [...trimmedLines].reverse().findIndex((l) => l.length > 0)
+        const croppedLines = trimmedLines.slice(firstNonEmpty, lastNonEmpty + 1)
+        const minIndent = Math.min(...nonEmptyLines.map((l) => l.length - l.trimStart().length))
+        const finalLines = croppedLines.map((l) => l.slice(minIndent))
+        const maxCols = Math.max(...finalLines.map((l) => l.length))
         const w = Math.ceil(maxCols * charWidth)
         const h = Math.ceil(lines.length * lineHeight)
 
+        const finalH = Math.ceil(finalLines.length * lineHeight)
         canvas.width = w
-        canvas.height = h
+        canvas.height = finalH
         canvas.style.width = '100%'
         canvas.style.maxWidth = `${maxWidth}px`
         canvas.style.height = 'auto'
-        canvas.style.aspectRatio = `${w} / ${h}`
+        canvas.style.aspectRatio = `${w} / ${finalH}`
 
         const ctx = canvas.getContext('2d')!
-        ctx.clearRect(0, 0, w, h)
+        ctx.clearRect(0, 0, w, finalH)
         ctx.fillStyle = '#ffffff'
         ctx.font = `${fontSize}px monospace`
         ctx.textBaseline = 'top'
 
-        for (let i = 0; i < lines.length; i++) {
-          ctx.fillText(lines[i], 0, i * lineHeight)
+        for (let i = 0; i < finalLines.length; i++) {
+          ctx.fillText(finalLines[i], 0, i * lineHeight)
         }
       })
   }, [src, maxWidth])
@@ -44,99 +52,49 @@ function AsciiCanvas({ src, maxWidth = 500 }: { src: string; maxWidth?: number }
 
 export default function OnBeauty() {
   return (
-    <>
+    <div className="article-contained">
       <h1 className="article-title">on beauty</h1>
       <div className="article-meta">june 2026</div>
-      <div className="article-body">
-        <h2>reflection tldr</h2>
-        <p>
-          as you can tell, i find a lot of beauty in existential moments. i love being reminded
-          of the wonder surrounding our existence. to me, surrendering can apply to thoughts,
-          expectations, and preconceptions. when we break out of a phase of tunnel vision or
-          neurotic cycles, unboundedness becomes apparent, catharsis floods our bodies, and
-          this is exactly when beauty appears for me.
-        </p>
-      </div>
       <div className="article-image">
-        <AsciiCanvas src="/rose.txt" maxWidth={350} />
+        <AsciiCanvas src="/rose.txt" maxWidth={330} />
       </div>
       <div className="article-body">
-        <h2>pockets of time</h2>
         <p>
-          most of the beauty that has been seared into my mind has come from moments of
-          surrender. i look to these experiences as anchors when i feel the need to conform to
-          a certain person. why? the type of beauty i am speaking of is similar to a hug from
-          a distant future. no words have to be exchanged to grasp the freedom it promises.
-          letting go is a concept that is hard for me to internalize; maybe one day this will
-          all click.
-        </p>
-
-        <h2>night stars</h2>
-        <p>
-          in high school, i played baseball and part of my routine was a day of sprinting,
-          plyometrics, and medicine ball drills. whether it was irresponsibility or something
-          else, on these days i would routinely find myself staring at the gate leading into a
-          dark, empty football field after the sun had slipped away. picture a skinny kid in
-          sweatpants, a synthetic t-shirt, an arm sleeve, and cleats, shivering as he prepared
-          his mind to workout. while it was cold, i distinctly remember a burning desire to
-          prove something to someone - - a concept i struggled to identify back then, but a
-          feeling recognizable enough to push me forward. this warmed me up enough to reject
-          the idea of resting in bed.
+          there's a night in Mexico when the horizon melts into water. waves drown out your
+          thoughts and cool sand softens the blow of impossibility. thoughts rise and fall along
+          with the beat of waves, ushering you into a trance. suddenly, awe-struck and terrified
+          at the thought of being alive, your mind quickly makes its way back. you refuse and try
+          surrendering to this mental space. for a moment there's a sense of unboundedness. a
+          freedom to strive inspired by the impossibility of existence. too much thinking.
         </p>
         <p>
-          what i didn't know back then was that each drill was fueled by a sense of desperation
-          so strong it would later haunt me for a bit. still, after warming up it felt magical.
-          those who've run in the dark understand that point when the ground starts to slip
-          away, and running turns into sprinting, which turns into floating through a space
-          that stretches into blurs of light. my senses happily deceived me.
+          -- i go back and eat dinner. no point in dissecting my own conscious when it just
+          becomes neurotic cycles
         </p>
         <p>
-          this high would last for a little while, but it was the moments after exhausting
-          myself that have carved out a pocket of time in my memory. as soon i took out my
-          earbuds, silence opened its arms offering to cleanse me completely. the weight of
-          slight rustles and general emptiness became viscerally apparent. in those moments,
-          all i could do was lay down on the cold, damp turf, observing every thought dissolve
-          into just awareness of my barely visible surroundings.
+          there's a night when jogging becomes running becomes sprinting becomes floating. the
+          ground is barely visible and blurs of light become apparent in your periphery. it all
+          makes for an illusive experience, but it feels so real. as the high starts to wear, you
+          realize you're exhausted and the music agrees. it dies appropriately, cutting off the
+          flow of energy pumping through your veins. all that remains is silence, leaves, and some
+          stars.
         </p>
         <p>
-          in some shape or form i understood that in these moments of silence and solitude, i
-          was stripped of my humanness and cast as a tiny observer of the stars. my
-          consciousness would cycle between bewilderment and acceptance, as i imagined up a
-          storm of reality, finding my senses only bound to one. beauty is like a trance, and
-          i was stunned.
-        </p>
-
-        <h2>night sea</h2>
-        <p>
-          puerto vallarta is a city on the west coast of mexico. this place, amongst many
-          others, feels like home to a collective desire to escape - - a true vacation. i can
-          still vaguely grasp at memories of light arpeggios and vibrant chords moving between
-          people's laughs and the cool evening air while waiting to eat dinner. during my stay,
-          i would typically head back to the hotel to sleep after dinners like this. but one
-          day, i couldn't. i had to clear my mind. so, as dusk drew near, i made my way
-          towards the beach right outside my stay. while most people were being ushered out by
-          the night, i had just taken off my shoes and stepped onto cool sand. what's amazing
-          about this beach is that while darkness drew nearer, the ocean and horizon started to
-          melt into one.
+          -- im too tired to think. i let go, lie down and observe. surrendering sobers the
+          thought of impossibility, and allows for less thinking. i understand the immensity of
+          being alive and the thought of recognizing that immensity. this feeling comes and goes.
+          its much easier to reach this point after clinging onto an outcome for so long.
         </p>
         <p>
-          after finding a seat on a sand mound, this fact become apparent. i was enveloped in a
-          vast picture of sea and sky. the rhythm of waves led my heart to their dance. and
-          when closing my eyes to temper my breath, i found my mind's eye hypnotized by the
-          undulating hushes, vastness of the beach, and impossibility of being able to
-          experience 'beauty' all at once. retreating into my own world, i found myself
-          standing between imaginations of infinite lines of people before and after me,
-          experiencing the same thing in different ways. it was almost like a lucid dream where
-          reflection was encouraged, but thought about reflection was immediately washed away
+          I've tried hard to release thoughts, expectations, preconceptions. Through reflection,
+          the deepest beauty I've experienced has come after surrendering these concepts. I can
+          only describe the act of doing so through a foggy lens. Because, in my experience, it
+          relies on serendipity and vulnerability. Two concepts that are understood by directing
+          attention somewhere other than beauty itself. In other words, beauty seems to emerge in
+          unexpected moments as a byproduct of the natural tendency to cling onto people, dreams, 
+          duty and release them.
         </p>
-
-        <img
-          src="/PuertoVallarta.jpg"
-          alt="Puerto Vallarta"
-          style={{ width: '100%', maxWidth: '500px', display: 'block', margin: '2rem auto 0.5rem' }}
-        />
-        <p style={{ textAlign: 'center', fontStyle: 'italic' }}>puerto vallarta</p>
       </div>
-    </>
+    </div>
   )
 }
