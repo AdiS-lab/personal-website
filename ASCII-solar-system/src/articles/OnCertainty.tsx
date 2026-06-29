@@ -11,7 +11,7 @@ function AsciiCanvas({ src }: { src: string }) {
 
         const lines = text.split('\n')
         const fontSize = 10
-        const lineHeight = fontSize * 1.15
+        const lineHeight = fontSize * 1.05
         const charWidth = fontSize * 0.6
 
         const trimmedLines = lines.map((l) => l.trimEnd())
@@ -23,9 +23,8 @@ function AsciiCanvas({ src }: { src: string }) {
         const finalLines = croppedLines.map((l) => l.slice(minIndent))
         const maxCols = Math.max(...finalLines.map((l) => l.length))
         const w = Math.ceil(maxCols * charWidth)
-        // const h = Math.ceil(lines.length * lineHeight)
-
         const finalH = Math.ceil(finalLines.length * lineHeight)
+
         canvas.width = w
         canvas.height = finalH
         canvas.style.width = '100%'
@@ -49,22 +48,31 @@ function AsciiCanvas({ src }: { src: string }) {
   )
 }
 
-export default function OnBeauty() {
+export default function OnCertainty() {
   return (
     <div className="article-contained">
-      <h1 className="article-title">on beauty</h1>
+      <h1 className="article-title">on certainty</h1>
       <div className="article-image" style={{ padding: 0, background: 'none', border: 'none' }}>
-        <AsciiCanvas src="/cool-rose.txt" />
+        <AsciiCanvas src="/other-eye.txt" />
       </div>
       <div className="article-body">
         <p>
-          there's a night in Mexico where the horizon melts into water. waves drown out your thoughts and cool sand softens the blow of impossibility. thoughts rise and fall along with the beat of waves, ushering away all reason and rhyme into trance. awe-struck and terrified at the thought of being alive you try surrendering to this mental space in order to bask in the gut-wrenching feeling of shattered perspective. for a moment sense of unboundedness emerges -- inspired by the impossibility of existence. too much thinking.
+          when starting anything we hold a standard in our heads that a pursuit should be certain, and an output should be measured. we cling on to the idea that our current vantage point is enough to optimize for an outcome. yet our worldview is formed by fragments of people whove built their own scaffold from bottom up. if everyone comes across certain, then our worldview becomes corrupted with expectation.
         </p>
         <p>
-          there's a night when jogging becomes running becomes sprinting becomes floating. the ground is barely visible and light blurs into spots that only appear in your periphery. it all makes for an illusive experience, but it feels so real. as the high starts to wear, you realize you're exhausted and the music agrees. it dies appropriately, cutting off a flow of energy pumping through your veins. all that remains is silence, leaves, and some stars. the immensity of being alive once again sparks a mind-boggling recognition of existing.
+          meaning is a proxy for certainty. when approaching certainty we put meaning at the forefront of our thought (what is my purpose? is my direction right? why am i doing this?). and this feeds into the fallacy that direction/certainty/purpose comes before taking the first 10,000 steps.
         </p>
         <p>
-          I've tried hard to release thoughts, expectations, preconceptions. Through reflection, the deepest beauty I've experienced has come after surrendering these concepts. In my experience, this relies on serendipity and vulnerability. Two concepts that are best understood by forgetting they exist in the first place. from what ive seen, beauty comes in unexpected moments as a byproduct of the natural dance between clinging onto people/dreams and releasing them.
+          the reality to me, seems that meaning shouldn't be the center of human existence. rather it should be approached as a question that answers itself the more one buys into the cycle of movement and change. as perspective is gained and lost, the question of meaning deepens and so does the answer. to me, this is the source of wisdom and certainty.
+        </p>
+        <p>
+          the point being that this whole idea of certainty is something we justify on the grounds of someone else's perspective rather than trusting our own thought. were so accustomed to looking at the world through someone else's eyes that we forget to see the present through our own. when we do so certainty -- bolstered by right, wrong and should be's -- crumbles.
+        </p>
+        <p>
+          who are we to predict the future when we have incomplete information, and our perspective is shallow. there is way too much advice about success, metaphysics, mentalism, discipline, motivation, to get caught up in. yet none of this means anything without foundation.
+        </p>
+        <p>
+          and i think this foundation starts by making a decision with our own eyes.
         </p>
       </div>
     </div>

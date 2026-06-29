@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useState, useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
@@ -786,15 +786,58 @@ function Scene() {
 //  Exported canvas wrapper
 // ============================================================
 
+function ReadySignal({ onReady }: { onReady: () => void }) {
+  const called = useRef(false)
+  useFrame(() => {
+    if (!called.current) {
+      called.current = true
+      onReady()
+    }
+  })
+  return null
+}
+
+function LoadingIndicator() {
+  const frames = ['.', '*', '0']
+  const [frame, setFrame] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setFrame((f) => (f + 1) % frames.length), 300)
+    return () => clearInterval(id)
+  }, [])
+  return <>{frames[frame]}</>
+}
+
 export default function SolarSystem() {
+  const [ready, setReady] = useState(false)
+
   return (
-    <Canvas
-      camera={{ position: [0, 12 * SCALE, 22 * SCALE], fov: 45, near: 0.1, far: 1000 }}
-      style={{ width: '100%', height: '100%' }}
-    >
-      <color attach="background" args={['#0d0d0d']} />
-      <OrbitControls />
-      <Scene />
-    </Canvas>
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      {!ready && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0d0d0d',
+          zIndex: 1,
+          fontFamily: 'monospace',
+          fontSize: '18px',
+          color: '#ffffff',
+          letterSpacing: '2px',
+        }}>
+          <LoadingIndicator />
+        </div>
+      )}
+      <Canvas
+        camera={{ position: [0, 12 * SCALE, 22 * SCALE], fov: 45, near: 0.1, far: 1000 }}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <color attach="background" args={['#0d0d0d']} />
+        <OrbitControls />
+        <Scene />
+        <ReadySignal onReady={() => setReady(true)} />
+      </Canvas>
+    </div>
   )
 }

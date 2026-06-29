@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '{ if \\(length > max\\) max = length } END { print \"lines:\", NR, \"max width:\", max }' \"C:/Javascript/RealProjects/ASCII solar system/ASCII-solar-system/public/eye-art.txt\")",
+      "Bash(wc -l \"C:/Javascript/RealProjects/ASCII solar system/ASCII-solar-system/public/real-eye.txt\" && awk '{ if \\(length > max\\) max = length } END { print \"max width:\", max }' \"C:/Javascript/RealProjects/ASCII solar system/ASCII-solar-system/public/real-eye.txt\")"
+    ]
+  }
+}

@@ -21,9 +21,9 @@ export const ARTICLES: ArticleEntry[] = [
     component: lazy(() => import('./OnBeauty'))
   },
   {
-    id: 'inspiration',
-    title: 'inspiration',
-    date: '2026.06.22',
-    component: lazy(() => import('./Inspiration'))
+    id: 'on-certainty',
+    title: 'on-certainty',
+    date: '2026.06.29',
+    component: lazy(() => import('./OnCertainty'))
   }
 ]
