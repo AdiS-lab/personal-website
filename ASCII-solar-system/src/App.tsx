@@ -40,7 +40,7 @@ function Home() {
 
       <div className="bio">
         <p>
-          i'm studying EE at georgia tech. i strive towards <a href="https://nationalhumanitiescenter.org/pds/triumphnationalism/cman/text8/selfreliance.pdf" target="_blank" rel="noopener noreferrer" className={cl('this')} onClick={mark('this')}>this</a> as a life philosophy and currently im interested in fullstack dev + computer graphics. i believe interacting with software should be magic. find me here adi [at] gmail.com -- <a href="https://www.linkedin.com/in/adi-shankar-7268b7311/" target="_blank" rel="noopener noreferrer" className={cl('linkedin')} onClick={mark('linkedin')}>linkedin</a> -- <a href="https://github.com/AdiS-lab" target="_blank" rel="noopener noreferrer" className={cl('github')} onClick={mark('github')}>github</a>
+          i'm studying EE at georgia tech. i strive towards <a href="https://emersoncentral.com/texts/essays-first-series/spiritual-laws/" target="_blank" rel="noopener noreferrer" className={cl('this')} onClick={mark('this')}>this</a> as a life philosophy and currently im interested in fullstack dev + computer graphics. i believe interacting with software should be magic. find me here adi [at] gmail.com -- <a href="https://www.linkedin.com/in/adi-shankar-7268b7311/" target="_blank" rel="noopener noreferrer" className={cl('linkedin')} onClick={mark('linkedin')}>linkedin</a> -- <a href="https://github.com/AdiS-lab" target="_blank" rel="noopener noreferrer" className={cl('github')} onClick={mark('github')}>github</a>
         </p>
       </div>
     </>
