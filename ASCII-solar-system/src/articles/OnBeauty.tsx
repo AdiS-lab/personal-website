@@ -58,7 +58,7 @@ export default function OnBeauty() {
       </div>
       <div className="article-body">
         <p>
-          there's a night in Mexico where the horizon melts into water. waves drown out your thoughts and cool sand softens the blow of impossibility. thoughts rise and fall along with the beat of waves, ushering away all reason and rhyme into trance. awe-struck and terrified at the thought of being alive you try surrendering to this mental space in order to bask in the gut-wrenching feeling of shattered perspective. for a moment sense of unboundedness emerges inspired by the impossibility of existence.
+          there's a night in Mexico where the horizon melts into water. waves drown out your thoughts and cool sand softens the blow of impossibility. thoughts rise and fall along with the beat of waves, ushering away all reason and rhyme into trance. awe-struck and terrified at the thought of being alive you try surrendering to this mental space in order to bask in the gut-wrenching feeling of shattered perspective. for a moment, a sense of unboundedness emerges inspired by the impossibility of existence.
         </p>
         <p>
           there's a night when jogging becomes running becomes sprinting becomes floating. the ground is barely visible and turf blurs into spots of light that only appear in your periphery. it all makes for an illusive experience, but it feels so real. as the high starts to wear, you realize you're exhausted and the music agrees. it dies appropriately, cutting off a flow of energy pumping through your veins. all that remains is silence, leaves, and some stars.
