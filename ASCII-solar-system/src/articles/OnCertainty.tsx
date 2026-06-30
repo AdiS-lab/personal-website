@@ -57,22 +57,25 @@ export default function OnCertainty() {
       </div>
       <div className="article-body">
         <p>
-          when starting anything we hold a standard in our heads that a pursuit should be certain, and an output should be measured. we cling on to the idea that our current vantage point is enough to optimize for an outcome. yet our worldview is formed by fragments of people whove built their own scaffold from bottom up. if everyone comes across certain, then our worldview becomes corrupted with expectation.
+          when starting anything we hold a standard in our heads that a pursuit should be certain, and an output should be measured. we cling to the idea that our current vantage point is enough to optimize for an outcome. yet our worldview is formed by fragments of people whove built their own scaffold from bottom up. if everyone we see comes across as certain (which is usually the case) then our worldview becomes corrupted with expectation.
         </p>
         <p>
-          meaning is a proxy for certainty. when approaching certainty we put meaning at the forefront of our thought (what is my purpose? is my direction right? why am i doing this?). and this feeds into the fallacy that direction/certainty/purpose comes before taking the first 10,000 steps.
+          meaning is a proxy for certainty. when approaching certainty we put meaning at the forefront of our thought (what is my purpose? is my direction right? why am i doing this?). and this feeds into the fallacy that certainty is something found by searching for it.
         </p>
         <p>
-          the reality to me, seems that meaning shouldn't be the center of human existence. rather it should be approached as a question that answers itself the more one buys into the cycle of movement and change. as perspective is gained and lost, the question of meaning deepens and so does the answer. to me, this is the source of wisdom and certainty.
+          the reality to me, seems that searching for meaning isn't the center of human existence. rather it should be approached as a question that answers itself the more we buy into cycles of movement and change. as perspective is gained and lost, the answer naturally takes shape.
         </p>
         <p>
-          the point being that this whole idea of certainty is something we justify on the grounds of someone else's perspective rather than trusting our own thought. were so accustomed to looking at the world through someone else's eyes that we forget to see the present through our own. when we do so certainty -- bolstered by right, wrong and should be's -- crumbles.
+          the point being that we get so caught up in certainty when its usually bolstered by someone else's right, wrong, and should bes. attempting to reconcile these ideals, we end up optimizing for outcomes that guarantee results within strict constraints. our world literally closes up, and we introduce an extreme belief in limited opportunity. when our mind is operating on such a shaky foundation, we are pulled into hostility and cynicism.
         </p>
         <p>
-          who are we to predict the future when we have incomplete information, and our perspective is shallow. there is way too much advice about success, metaphysics, mentalism, discipline, motivation, to get caught up in. yet none of this means anything without foundation.
+          how can we predict the future when we have incomplete information, and our perspective is shallow. i think theres way too much advice about success, metaphysics, mentalism, discipline, motivation, to get caught up in. and its easy to obsess too much over "how I should be thinking", "what I should be doing at this age", "what the correct thing is," forgetting that theres no "certain" pathway.
         </p>
         <p>
-          and i think this foundation starts by making a decision with our own eyes.
+          i often like to think about what a young [insert inspiration] would be doing at my age. and i think that even if they had phases of obsessing over meaning and pathway, they all wouldve converged on a decision personally exciting or necessary to alleviate their present situation. in either sense, this would be decoupled from certainty, and fueled by a personal stake in their pursuit.
+        </p>
+        <p>
+          i think its this ability to make a decision that may be wrong but feels right, in which the foundational trajectory for a meaningful life is formed.
         </p>
       </div>
     </div>

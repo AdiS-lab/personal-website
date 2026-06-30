@@ -93,6 +93,10 @@ body {
   transition: color 0.2s ease;
 }
 
+.bio-link.clicked {
+  color: #666;
+}
+
 .bio-link:hover {
   color: #e0e0e0;
 }
@@ -222,6 +226,10 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
+}
+
+.link-item.clicked {
+  color: #666;
 }
 
 .link-item:hover {

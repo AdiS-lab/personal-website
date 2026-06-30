@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import SolarSystem from './SolarSystem'
 import Writings from './Writings'
@@ -25,6 +26,10 @@ function AsciiFrame({ children }: { children: React.ReactNode }) {
 }
 
 function Home() {
+  const [clicked, setClicked] = useState<Set<string>>(new Set())
+  const cl = (id: string) => `bio-link${clicked.has(id) ? ' clicked' : ''}`
+  const mark = (id: string) => () => setClicked((prev) => new Set(prev).add(id))
+
   return (
     <>
       <div>
@@ -35,11 +40,7 @@ function Home() {
 
       <div className="bio">
         <p>
-          i'm studying Electrical Engineering at georgia tech.
-          here are some of my <Link className="bio-link" to="/books">favorite books</Link> and
-          an <a href="https://frontendhanddraw.vercel.app/" target="_blank" rel="noopener noreferrer" className="bio-link">app i built</a>.
-          i believe interacting with software should be a magical experience.
-          find me on <a href="https://www.linkedin.com/in/adi-shankar-7268b7311/" target="_blank" rel="noopener noreferrer" className="bio-link">linkedin</a> and <a href="https://github.com/AdiS-lab" target="_blank" rel="noopener noreferrer" className="bio-link">github</a>.
+          i'm studying EE at georgia tech. i strive towards <a href="https://nationalhumanitiescenter.org/pds/triumphnationalism/cman/text8/selfreliance.pdf" target="_blank" rel="noopener noreferrer" className={cl('this')} onClick={mark('this')}>this</a> as a life philosophy and currently im interested in fullstack dev + computer graphics. i believe interacting with software should be magic. find me here adi [at] gmail.com -- <a href="https://www.linkedin.com/in/adi-shankar-7268b7311/" target="_blank" rel="noopener noreferrer" className={cl('linkedin')} onClick={mark('linkedin')}>linkedin</a> -- <a href="https://github.com/AdiS-lab" target="_blank" rel="noopener noreferrer" className={cl('github')} onClick={mark('github')}>github</a>
         </p>
       </div>
     </>

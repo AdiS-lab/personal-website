@@ -8,12 +8,6 @@ export interface ArticleEntry {
 }
 
 export const ARTICLES: ArticleEntry[] = [
-  // {
-  //   id: 'on-success',
-  //   title: 'on-success',
-  //   date: '2026.03',
-  //   component: lazy(() => import('./OnSuccess')),
-  // },
   {
     id: 'on-beauty',
     title: 'on-beauty',

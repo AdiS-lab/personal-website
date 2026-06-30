@@ -9,7 +9,7 @@ import * as THREE from 'three'
 
 const SCALE = 3
 const SUN_R = 2 * SCALE
-const CHARS = [' ', '.', ':', '-', '+', '=', 'X', '#']
+const CHARS = [' ', '.', ':', '*', '+', '#', '%', '@']
 const CHAR_COUNT = CHARS.length
 const CELL_SIZE = 64
 
@@ -198,59 +198,6 @@ function createSunMaterial(atlas: THREE.Texture): THREE.ShaderMaterial {
     side: THREE.DoubleSide,
   })
 }
-
-
-// ============================================================
-//  Planet name label
-// ============================================================
-
-// function createLabelTexture(name: string): THREE.CanvasTexture {
-//   const canvas = document.createElement('canvas')
-//   const fontSize = 64
-//   const ctx = canvas.getContext('2d')!
-//   ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
-//   const metrics = ctx.measureText(name)
-//   const width = Math.ceil(metrics.width) + 20
-//   const height = fontSize + 20
-//   canvas.width = width
-//   canvas.height = height
-//   ctx.font = `italic ${fontSize}px 'Playfair Display', serif`
-//   ctx.clearRect(0, 0, width, height)
-//   ctx.fillStyle = name === 'Sun' ? '#ffffff' : '#aaaaaa'
-//   ctx.textAlign = 'center'
-//   ctx.textBaseline = 'middle'
-//   ctx.fillText(name, width / 2, height / 2)
-//   const tex = new THREE.CanvasTexture(canvas)
-//   tex.minFilter = THREE.LinearFilter
-//   tex.magFilter = THREE.LinearFilter
-//   tex.needsUpdate = true
-//   return tex
-// }
-
-// function PlanetLabel({ name, offset }: { name: string; offset: number }) {
-//   const tex = useMemo(() => createLabelTexture(name), [name])
-//   const aspect = tex.image.width / tex.image.height
-//   const labelHeight = offset * 0.6
-//   const labelWidth = labelHeight * aspect
-//
-//   return (
-//     <Billboard position={[0, offset, 0]}>
-//       <mesh>
-//         <planeGeometry args={[labelWidth, labelHeight]} />
-//         <meshBasicMaterial
-//           map={tex}
-//           transparent
-//           depthWrite={false}
-//           depthTest={false}
-//         />
-//       </mesh>
-//     </Billboard>
-//   )
-// }
-
-// ============================================================
-//  AsciiSun
-// ============================================================
 
 const SUN_SURFACE_COUNT = 5000
 const SUN_FLARE_COUNT = 1500
