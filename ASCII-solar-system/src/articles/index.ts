@@ -19,5 +19,11 @@ export const ARTICLES: ArticleEntry[] = [
     title: 'on-certainty',
     date: '2026.06.29',
     component: lazy(() => import('./OnCertainty'))
+  },
+  {
+    id: 'on-happiness',
+    title: 'on-happiness',
+    date: '2026.07.01',
+    component: lazy(() => import('./OnHappiness'))
   }
 ]
